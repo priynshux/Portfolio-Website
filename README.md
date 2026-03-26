@@ -27,7 +27,7 @@ portfolio_db/
 pip install -r requirements.txt
 
 # 2. Run the app (DB is auto-created + seeded)
-python app.py
+python main.py
 
 # 3. Open in browser
 #    Portfolio  →  http://localhost:5000
