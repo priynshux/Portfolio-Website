@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ data.name }} | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5; /* Indigo */
+            --bg: #f8fafc;      /* Light Slate */
+            --text: #1e293b;    /* Dark Slate */
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --muted: #64748b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+        .logo span { color: var(--primary); }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-left: 2rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero Section with Profile Image */
+        .hero-flex {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 8rem 0;
+        }
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            outline: 2px solid var(--primary);
+            flex-shrink: 0;
+        }
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 600px;
+        }
+
+        /* Section Headings */
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        h2::after {
+            content: "";
+            height: 1px;
+            flex: 1;
+            background: var(--border);
+        }
+
+        /* Grid & Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        /* Skills */
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .skill-bar {
+            height: 6px;
+            background: #f1f5f9;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .skill-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        /* Projects */
+        .project-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .project-desc { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .tag {
+            background: #f1f5f9;
+            color: var(--muted);
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-right: 4px;
+        }
+        .project-link {
+            display: inline-block;
+            margin-top: 1.25rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding: 6rem 0 3rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin: 2rem 0;
+        }
+        .contact-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .contact-links a:hover { color: var(--primary); }
+
+        @media (max-width: 768px) {
+            .hero-flex { flex-direction: column; text-align: center; padding: 4rem 0; }
+            .nav-links { display: none; }
+            .contact-links { gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <a href="/" class="logo">Priyanshu</a>
+            <div class="nav-links">
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <a href="/admin" style="color: var(--primary)">Admin</a>
+            </div>
+        </nav>
+
+        <section class="hero-flex">
+            <img src="{{ url_for('static', filename='profile.jpeg') }}" alt="Profile Image" class="profile-img">
+            <div class="hero-text">
+                <h1>{{ data.name }}</h1>
+                <p>{{ data.title }} @ {{ data.university }} <br> {{ data.bio }}.</p>
+            </div>
+        </section>
+
+        <h2 id="skills">Expertise</h2>
+        <div class="grid">
+            {% for s in skills %}
+            <div class="card">
+                <div class="skill-header">
+                    <span>{{ s.name }}</span>
+                    <span style="color: var(--muted); font-size: 0.8rem;">{{ s.level }}</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width: {{ s.fill }}%"></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <h2 id="projects">Selected Work</h2>
+        <div class="grid">
+            {% for p in projects %}
+            <div class="card">
+                <div class="project-title">{{ p.name }}</div>
+                <p class="project-desc">{{ p.desc }}</p>
+                <div class="tech-tags">
+                    {% if p.tech %}
+                        {% for tag in p.tech.split(',') %}
+                        <span class="tag">{{ tag.strip() }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                {% if p.link %}
+                <a href="{{ p.link }}" target="_blank" class="project-link">View Project →</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <footer id="contact">
+            <div class="logo" style="font-size: 2rem;">PR<span>.</span></div>
+
+            <div class="contact-links">
+                <a href="mailto:priyanshuranjan2209@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/priyanshu-ranjan-291287378/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+            </div>
+
+            <p style="color: var(--muted); font-size: 0.85rem;">
+                &copy; 2026 {{ data.name }}. All rights reserved.
+            </p>
+        </footer>
+    </div>
+
+</body>
+</html>
