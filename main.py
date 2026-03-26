@@ -28,7 +28,8 @@ class Project(db.Model):
     link  = db.Column(db.String(300), default='')
 
 # ── Public Routes ──────────────────────────────────────────────────────────────
-
+with app.app_context():
+    db.create_all()
 @app.route('/')
 def index():
     data = {
@@ -62,6 +63,4 @@ def delete_item(type, id):
     return redirect(url_for('admin'))
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
     app.run(debug=False)
